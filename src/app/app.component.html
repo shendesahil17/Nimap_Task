@@ -1,0 +1,23 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <label>Name:</label>
+  <input type="text" formControlName="name">
+  <div *ngIf="myForm.get('name').hasError('required') && myForm.get('name').touched">
+    Name is required.
+  </div>
+
+  <label>Email:</label>
+  <input type="email" formControlName="email">
+  <div *ngIf="myForm.get('email').hasError('required') && myForm.get('email').touched">
+    Email is required.
+  </div>
+  <div *ngIf="myForm.get('email').hasError('email') && myForm.get('email').touched">
+    Email is invalid.
+  </div>
+
+  <button type="submit" [disabled]="myForm.invalid">Submit</button>
+</form>
+<div>
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
